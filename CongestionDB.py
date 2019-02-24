@@ -1,16 +1,5 @@
-import datetime
-import pymongo
-
-#Dictionary of all towers to each corresponding zone and location
-zone = {'Tower1' : 1, 'Tower2' : 2, 'Tower3' : 3}
-zoneLocation = {1 : 'Brooklyn Bridge', 2 : 'Prospect Park', 3 : 'Empire State Building' }
-
-#Test data to be dynamically returned based off input from external source
-def getTower():
-    return 'Tower1'
-
-def getZone():
-    return zone.get(getTower())
+import datetime, pymongo
+import TowerZoneEvacMessage
 
 def getTime():
     return datetime.datetime.now()
@@ -34,7 +23,4 @@ congestionData = db['Congestion']
 
 
 #Put congestion data in db
-putCongestionInDB(getTime(),getTower(),getZone(),getNumPings())
-
-    #for document in congestionData.find({}):
-#print(document)
+putCongestionInDB(getTime(),TowerZoneEvacMessage.getTower(),TowerZoneEvacMessage.getZone(),getNumPings())

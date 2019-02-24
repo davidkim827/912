@@ -1,5 +1,5 @@
 import pymongo
-import CongestionDB
+import CongestionDB, TowerZoneEvacMessage
 
 #Create fake input caller
 name = 'Jane Doe'
@@ -41,7 +41,7 @@ def analyzeEmergencyCallerData():
 #Look at secondary data based off how busy certain areas are
 def analyzeCongestionData():
     congestionString = ''
-    zoneArea = CongestionDB.zoneLocation.get(zone)
+    zoneArea = TowerZoneEvacMessage.getDangerPoint()
     for entry in congestionData.find({'Zone':zone}):
         if entry.get('NumPings') is not None and entry.get('NumPings')>100000 and congestionString.find(zoneArea)==-1:
             if (congestionString!=''):
