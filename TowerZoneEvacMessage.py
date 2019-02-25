@@ -60,7 +60,6 @@ def getDangerPoint():
 def mapLink(zoneNumber):
 	for zone, link in evacLinks.items():
 		if zone == getZone():
-			print (link)
 			return link
 
 def getMapLink():
@@ -77,4 +76,3 @@ zoneInfo = getZoneNumber(towerInfo)
 evacInfo = getEvacPointLocation(zoneInfo)
 dangerPoint = getDangerPoint()
 mapLink = mapLink(zoneInfo)
-print(dangerPoint)
